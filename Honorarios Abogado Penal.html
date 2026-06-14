@@ -33,10 +33,10 @@
 
     <div style="display: flex; flex-direction: column; align-items: center; gap: 15px; width: 100%; box-sizing: border-box;">
 
-        <button onclick="forzarDescarga('https://github.com/Konecta-K9mP2qR7wL4nB8vX5cZ1jH6yT3sD0f/Suramericana/blob/main/Requisitos%20para%20la%20solicitud%20de%20reembolso%20por%20honorarios%20de%20abogados.pdf', 'Requisitos para la solicitud de reembolso por honorarios de abogados.pdf')" 
+        <button onclick="forzarDescarga('https://jaimesequer.github.io/konecta.yosu.9s7M4pWq2BvL5x8Zz1Tj6K3nF0yC9h8R4wP/Requisitos solicitud de reembolso.pdf', 'Requisitos solicitud de reembolso.pdf')" 
                 class="btn-descarga"
-                style="background-color: #2d6df6; color: white; padding: 14px 20px; border: none; border-radius: 6px; display: inline-block; font-weight: bold; font-size: 14px; box-shadow: 0 4px 6px rgba(0,0,0,0.15); width: 100%; max-width: 450px; text-align: left; box-sizing: border-box; cursor: pointer; font-family: sans-serif;">
-           📥 Requisitos Reembolso Honorarios Abogados
+                style="background-color: #2d6df6; color: white; padding: 14px 20px; border: none; border-radius: 6px; display: inline-block; font-weight: bold; font-size: 14px; box-shadow: 0 4px 6px rgba(0,0,0,0.15); width: 100%; max-width: 420px; text-align: left; box-sizing: border-box; cursor: pointer; font-family: sans-serif;">
+           📥 Requisitos Solicitud de Reembolso
         </button>
 
     </div>
@@ -44,10 +44,7 @@
     <script>
     function forzarDescarga(url, nombreArchivo) {
         fetch(url)
-            .then(respuesta => {
-                if (!respuesta.ok) throw new Error('404');
-                return respuesta.blob();
-            })
+            .then(respuesta => respuesta.blob())
             .then(blob => {
                 const link = document.createElement('a');
                 link.href = URL.createObjectURL(blob);
@@ -58,10 +55,10 @@
                 URL.revokeObjectURL(link.href);
             })
             .catch(error => {
-                // Si el fetch falla por CORS o caché, abre la URL directa en pestaña nueva para que baje limpio
                 const linkElement = document.createElement('a');
                 linkElement.href = url;
-                linkElement.target = '_blank';
+                linkElement.download = nombreArchivo;
+                linkElement.target = '_self';
                 linkElement.click();
             });
     }
