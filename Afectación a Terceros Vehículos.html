@@ -24,7 +24,6 @@
 </head>
 <body style="font-family: sans-serif; padding: 20px 15px; background-image: linear-gradient(rgba(244, 246, 249, 0.2), rgba(244, 246, 249, 0.2)), url('Suraa.png'); background-size: cover; background-position: center; background-repeat: no-repeat; background-attachment: fixed; max-width: 900px; margin: 0 auto; text-align: center; box-sizing: border-box;">
 
-    <!-- Título principal -->
     <h1 style="color: #1a1a1a; font-size: 32px; font-weight: 800; margin-top: 40px; margin-bottom: 10px; text-shadow: 1px 1px 3px rgba(255,255,255,0.9); letter-spacing: -0.5px; display: inline-block; border-bottom: 4px solid #2d6df6; padding-bottom: 8px;">
         Afectación a Terceros - Vehículos
     </h1>
@@ -32,25 +31,21 @@
         Haz clic en cada botón para descargar los documentos:
     </p>
 
-    <!-- Contenedor de botones (Ahora llaman a la función de descarga directa) -->
     <div style="display: flex; flex-direction: column; align-items: center; gap: 15px; width: 100%; box-sizing: border-box;">
 
-        <!-- Botón 1 -->
-        <button onclick="forzarDescarga('https://jaimesequer.github.io/konecta.yosu.9s7M4pWq2BvL5x8Zz1Tj6K3nF0yC9h8R4wP/AUTORIZACIÓN MANEJO DATOS PERSONALES Y SENSIBLES.pdf', 'AUTORIZACIÓN MANEJO DATOS PERSONALES Y SENSIBLES.pdf')" 
+        <button onclick="forzarDescarga('https://raw.githubusercontent.com/Konecta-K9mP2qR7wL4nB8vX5cZ1jH6yT3sD0f/Suramericana/main/AUTORIZACIÓN%20MANEJO%20DATOS%20PERSONALES%20Y%20SENSIBLES.pdf', 'AUTORIZACIÓN MANEJO DATOS PERSONALES Y SENSIBLES.pdf')" 
                 class="btn-descarga"
                 style="background-color: #2d6df6; color: white; padding: 14px 20px; border: none; border-radius: 6px; display: inline-block; font-weight: bold; font-size: 14px; box-shadow: 0 4px 6px rgba(0,0,0,0.15); width: 100%; max-width: 420px; text-align: left; box-sizing: border-box; cursor: pointer; font-family: sans-serif;">
            📥 1. Autorización Manejo Datos Personales y Sensibles
         </button>
 
-        <!-- Botón 2 -->
-        <button onclick="forzarDescarga('https://jaimesequer.github.io/konecta.yosu.9s7M4pWq2BvL5x8Zz1Tj6K3nF0yC9h8R4wP/Formato reclamar por Daños a Tercero (Vehiculo).pdf', 'Formato reclamar por Daños a Tercero (Vehiculo).pdf')" 
+        <button onclick="forzarDescarga('https://raw.githubusercontent.com/Konecta-K9mP2qR7wL4nB8vX5cZ1jH6yT3sD0f/Suramericana/main/Formato%20reclamar%20por%20Daños%20a%20Tercero%20(Vehiculo).pdf', 'Formato reclamar por Daños a Tercero (Vehiculo).pdf')" 
                 class="btn-descarga"
                 style="background-color: #2d6df6; color: white; padding: 14px 20px; border: none; border-radius: 6px; display: inline-block; font-weight: bold; font-size: 14px; box-shadow: 0 4px 6px rgba(0,0,0,0.15); width: 100%; max-width: 420px; text-align: left; box-sizing: border-box; cursor: pointer; font-family: sans-serif;">
            📥 2. Formato Reclamar por Daños a Tercero
         </button>
 
-        <!-- Botón 3 -->
-        <button onclick="forzarDescarga('https://jaimesequer.github.io/konecta.yosu.9s7M4pWq2BvL5x8Zz1Tj6K3nF0yC9h8R4wP/Requisitos Daños a Terceros Vehiculos.pdf', 'Requisitos Daños a Terceros Vehiculos.pdf')" 
+        <button onclick="forzarDescarga('https://raw.githubusercontent.com/Konecta-K9mP2qR7wL4nB8vX5cZ1jH6yT3sD0f/Suramericana/main/Requisitos%20Daños%20a%20Terceros%20Vehiculos.pdf', 'Requisitos Daños a Terceros Vehiculos.pdf')" 
                 class="btn-descarga"
                 style="background-color: #2d6df6; color: white; padding: 14px 20px; border: none; border-radius: 6px; display: inline-block; font-weight: bold; font-size: 14px; box-shadow: 0 4px 6px rgba(0,0,0,0.15); width: 100%; max-width: 420px; text-align: left; box-sizing: border-box; cursor: pointer; font-family: sans-serif;">
            📥 3. Requisitos Daños a Terceros Vehículos
@@ -58,7 +53,6 @@
 
     </div>
 
-    <!-- Script para forzar la descarga real del archivo sin abrir el visor -->
     <script>
     function forzarDescarga(url, nombreArchivo) {
         fetch(url)
@@ -73,15 +67,13 @@
                 URL.revokeObjectURL(link.href);
             })
             .catch(error => {
-                // Alternativa de seguridad si el fetch falla por alguna razón externa
                 const linkElement = document.createElement('a');
                 linkElement.href = url;
                 linkElement.download = nombreArchivo;
-                linkElement.target = '_self';
+                linkElement.target = '_blank';
                 linkElement.click();
             });
     }
     </script>
-
 </body>
 </html>
