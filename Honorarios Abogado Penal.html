@@ -24,7 +24,6 @@
 </head>
 <body style="font-family: sans-serif; padding: 20px 15px; background-image: linear-gradient(rgba(244, 246, 249, 0.2), rgba(244, 246, 249, 0.2)), url('Suraa.png'); background-size: cover; background-position: center; background-repeat: no-repeat; background-attachment: fixed; max-width: 900px; margin: 0 auto; text-align: center; box-sizing: border-box;">
 
-    <!-- Título principal -->
     <h1 style="color: #1a1a1a; font-size: 32px; font-weight: 800; margin-top: 40px; margin-bottom: 10px; text-shadow: 1px 1px 3px rgba(255,255,255,0.9); letter-spacing: -0.5px; display: inline-block; border-bottom: 4px solid #2d6df6; padding-bottom: 8px;">
         Honorarios Abogado Penal
     </h1>
@@ -32,11 +31,9 @@
         Haz clic en el botón para descargar el documento:
     </p>
 
-    <!-- Contenedor de botones -->
     <div style="display: flex; flex-direction: column; align-items: center; gap: 15px; width: 100%; box-sizing: border-box;">
 
-        <!-- Botón Único con espacios normales (Igual que en tu plantilla de Vehículos) -->
-        <button onclick="forzarDescarga('https://jaimesequer.github.io/konecta.yosu.9s7M4pWq2BvL5x8Zz1Tj6K3nF0yC9h8R4wP/Requisitos para la solicitud de reembolso por honorarios de abogados.pdf', 'Requisitos para la solicitud de reembolso por honorarios de abogados.pdf')" 
+        <button onclick="forzarDescarga('PON_AQUI_LA_URL_QUE_COPIASTE', 'Requisitos para la solicitud de reembolso por honorarios de abogados.pdf')" 
                 class="btn-descarga"
                 style="background-color: #2d6df6; color: white; padding: 14px 20px; border: none; border-radius: 6px; display: inline-block; font-weight: bold; font-size: 14px; box-shadow: 0 4px 6px rgba(0,0,0,0.15); width: 100%; max-width: 450px; text-align: left; box-sizing: border-box; cursor: pointer; font-family: sans-serif;">
            📥 Requisitos Reembolso Honorarios Abogados
@@ -44,11 +41,13 @@
 
     </div>
 
-    <!-- Script idéntico al tuyo que sí funciona -->
     <script>
     function forzarDescarga(url, nombreArchivo) {
         fetch(url)
-            .then(respuesta => respuesta.blob())
+            .then(respuesta => {
+                if (!respuesta.ok) throw new Error('404');
+                return respuesta.blob();
+            })
             .then(blob => {
                 const link = document.createElement('a');
                 link.href = URL.createObjectURL(blob);
@@ -59,10 +58,10 @@
                 URL.revokeObjectURL(link.href);
             })
             .catch(error => {
+                // Si el fetch falla por CORS o caché, abre la URL directa en pestaña nueva para que baje limpio
                 const linkElement = document.createElement('a');
                 linkElement.href = url;
-                linkElement.download = nombreArchivo;
-                linkElement.target = '_self';
+                linkElement.target = '_blank';
                 linkElement.click();
             });
     }
