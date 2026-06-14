@@ -5,17 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Honorarios Abogado Penal</title>
     <style>
-        /* Ajustes automáticos y drásticos para pantallas de celulares */
         @media (max-width: 600px) {
             h1 {
-                font-size: 22px !important; /* Título cómodo para móviles */
+                font-size: 22px !important;
                 margin-top: 20px !important;
             }
             .btn-descarga {
-                font-size: 13px !important; /* Letra ligeramente más pequeña */
-                padding: 14px 10px !important; /* Espacio interno balanceado */
-                text-align: center !important; /* Centra el texto en celular */
-                white-space: normal !important; /* Permite salto de línea si no cabe */
+                font-size: 13px !important;
+                padding: 14px 10px !important;
+                text-align: center !important;
+                white-space: normal !important;
                 display: flex !important;
                 justify-content: center;
                 align-items: center;
@@ -25,6 +24,7 @@
 </head>
 <body style="font-family: sans-serif; padding: 20px 15px; background-image: linear-gradient(rgba(244, 246, 249, 0.2), rgba(244, 246, 249, 0.2)), url('Suraa.png'); background-size: cover; background-position: center; background-repeat: no-repeat; background-attachment: fixed; max-width: 900px; margin: 0 auto; text-align: center; box-sizing: border-box;">
 
+    <!-- Título principal -->
     <h1 style="color: #1a1a1a; font-size: 32px; font-weight: 800; margin-top: 40px; margin-bottom: 10px; text-shadow: 1px 1px 3px rgba(255,255,255,0.9); letter-spacing: -0.5px; display: inline-block; border-bottom: 4px solid #2d6df6; padding-bottom: 8px;">
         Honorarios Abogado Penal
     </h1>
@@ -32,10 +32,11 @@
         Haz clic en el botón para descargar el documento:
     </p>
 
+    <!-- Contenedor de botones -->
     <div style="display: flex; flex-direction: column; align-items: center; gap: 15px; width: 100%; box-sizing: border-box;">
 
-        <!-- URL limpiada con %20 para evitar que el script se rompa con los espacios -->
-        <button onclick="forzarDescarga('https://jaimesequer.github.io/konecta.yosu.9s7M4pWq2BvL5x8Zz1Tj6K3nF0yC9h8R4wP/Requisitos%20para%20la%20solicitud%20de%20reembolso%20por%20honorarios%20de%20abogados.pdf', 'Requisitos para la solicitud de reembolso por honorarios de abogados.pdf')" 
+        <!-- Botón Único con espacios normales (Igual que en tu plantilla de Vehículos) -->
+        <button onclick="forzarDescarga('https://jaimesequer.github.io/konecta.yosu.9s7M4pWq2BvL5x8Zz1Tj6K3nF0yC9h8R4wP/Requisitos para la solicitud de reembolso por honorarios de abogados.pdf', 'Requisitos para la solicitud de reembolso por honorarios de abogados.pdf')" 
                 class="btn-descarga"
                 style="background-color: #2d6df6; color: white; padding: 14px 20px; border: none; border-radius: 6px; display: inline-block; font-weight: bold; font-size: 14px; box-shadow: 0 4px 6px rgba(0,0,0,0.15); width: 100%; max-width: 450px; text-align: left; box-sizing: border-box; cursor: pointer; font-family: sans-serif;">
            📥 Requisitos Reembolso Honorarios Abogados
@@ -43,18 +44,11 @@
 
     </div>
 
-    <!-- Script Mejorado Anti-Errores y Blindado contra fallas de red -->
+    <!-- Script idéntico al tuyo que sí funciona -->
     <script>
     function forzarDescarga(url, nombreArchivo) {
-        // Le sumamos una variable de tiempo para obligar a GitHub a saltarse la caché y darnos el archivo fresco
-        const urlConCacheBuster = url + (url.includes('?') ? '&' : '?') + 'v=' + new Date().getTime();
-
-        fetch(urlConCacheBuster)
-            .then(respuesta => {
-                // Si el archivo no existe o da un error en GitHub, frena la descarga corrupta y activa el Plan B
-                if (!respuesta.ok) throw new Error('Error en el servidor');
-                return respuesta.blob();
-            })
+        fetch(url)
+            .then(respuesta => respuesta.blob())
             .then(blob => {
                 const link = document.createElement('a');
                 link.href = URL.createObjectURL(blob);
@@ -65,10 +59,10 @@
                 URL.revokeObjectURL(link.href);
             })
             .catch(error => {
-                // PLAN B SEGURO: Si el fetch falla por seguridad o porque se subió hace poco, abre el enlace normal para que se pueda descargar nativamente
                 const linkElement = document.createElement('a');
                 linkElement.href = url;
-                linkElement.target = '_blank';
+                linkElement.download = nombreArchivo;
+                linkElement.target = '_self';
                 linkElement.click();
             });
     }
