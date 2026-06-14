@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Renta Diaria por Hospitalización - Mascotas</title>
+    <style>
+        /* Ajustes automáticos y drásticos para pantallas de celulares */
+        @media (max-width: 600px) {
+            h1 {
+                font-size: 22px !important; /* Título cómodo para móviles */
+                margin-top: 20px !important;
+            }
+            .btn-descarga {
+                font-size: 13px !important; /* Letra ligeramente más pequeña */
+                padding: 14px 10px !important; /* Espacio interno balanceado */
+                text-align: center !important; /* Centra el texto en celular */
+                white-space: normal !important; /* Permite salto de línea si no cabe */
+                display: flex !important;
+                justify-content: center;
+                align-items: center;
+            }
+        }
+    </style>
+</head>
+<body style="font-family: sans-serif; padding: 20px 15px; background-image: linear-gradient(rgba(244, 246, 249, 0.2), rgba(244, 246, 249, 0.2)), url('Suraa.png'); background-size: cover; background-position: center; background-repeat: no-repeat; background-attachment: fixed; max-width: 900px; margin: 0 auto; text-align: center; box-sizing: border-box;">
+
+    <h1 style="color: #1a1a1a; font-size: 32px; font-weight: 800; margin-top: 40px; margin-bottom: 10px; text-shadow: 1px 1px 3px rgba(255,255,255,0.9); letter-spacing: -0.5px; display: inline-block; border-bottom: 4px solid #2d6df6; padding-bottom: 8px;">
+        Renta Diaria por Hospitalización - Mascotas
+    </h1>
+    <p style="color: #333; margin-top: 15px; margin-bottom: 40px; font-size: 15px; font-weight: bold; text-shadow: 1px 1px 2px rgba(255,255,255,0.8); padding: 0 10px;">
+        Haz clic en el botón para descargar el documento:
+    </p>
+
+    <div style="display: flex; flex-direction: column; align-items: center; gap: 15px; width: 100%; box-sizing: border-box;">
+
+        <button onclick="forzarDescarga('https://konecta-k9mp2qr7wl4nb8vx5cz1jh6yt3sd0f.github.io/Suramericana/Renta Diaria por Hospitalización mascotas.pdf', 'Renta Diaria por Hospitalización mascotas.pdf')" 
+                class="btn-descarga"
+                style="background-color: #2d6df6; color: white; padding: 14px 20px; border: none; border-radius: 6px; display: inline-block; font-weight: bold; font-size: 14px; box-shadow: 0 4px 6px rgba(0,0,0,0.15); width: 100%; max-width: 420px; text-align: left; box-sizing: border-box; cursor: pointer; font-family: sans-serif;">
+           📥 Requisitos Renta Diaria por Hospitalización Mascotas
+        </button>
+
+    </div>
+
+    <script>
+    function forzarDescarga(url, nombreArchivo) {
+        fetch(url)
+            .then(respuesta => respuesta.blob())
+            .then(blob => {
+                const link = document.createElement('a');
+                link.href = URL.createObjectURL(blob);
+                link.download = nombreArchivo;
+                document.body.appendChild(link);
+                link.click();
+                document.body.removeChild(link);
+                URL.revokeObjectURL(link.href);
+            })
+            .catch(error => {
+                const linkElement = document.createElement('a');
+                linkElement.href = url;
+                linkElement.download = nombreArchivo;
+                linkElement.target = '_self';
+                linkElement.click();
+            });
+    }
+    </script>
+
+</body>
+</html>
