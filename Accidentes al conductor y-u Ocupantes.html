@@ -30,44 +30,21 @@
         Accidentes al Conductor y/u Ocupantes
     </h1>
     <p style="color: #333; margin-top: 15px; margin-bottom: 40px; font-size: 15px; font-weight: bold; text-shadow: 1px 1px 2px rgba(255,255,255,0.8); padding: 0 10px;">
-        Haz clic en el botón para descargar los documentos necesarios:
+        Haz clic en el botón para ver el documento:
     </p>
 
-    <!-- Contenedor inteligente con el botón -->
+    <!-- Contenedor inteligente con el botón directo -->
     <div style="display: flex; flex-direction: column; align-items: center; gap: 15px; width: 100%; box-sizing: border-box;">
 
-        <!-- Botón para el PDF de Accidentes al Conductor -->
-        <button onclick="forzarDescarga('https://jaimesequer.github.io/konecta.yosu.9s7M4pWq2BvL5x8Zz1Tj6K3nF0yC9h8R4wP/Accidentes al Conductor y-u Ocupantes.pdf', 'Accidentes al Conductor y-u Ocupantes.pdf')" 
-                class="btn-descarga"
-                style="background-color: #2d6df6; color: white; padding: 14px 20px; border: none; border-radius: 6px; display: inline-block; font-weight: bold; font-size: 14px; box-shadow: 0 4px 6px rgba(0,0,0,0.15); width: 100%; max-width: 420px; text-align: left; box-sizing: border-box; cursor: pointer; font-family: sans-serif;">
-           📥 Formato Accidentes Conductor y/u Ocupantes
-        </button>
+        <!-- Botón clásico premium en pestaña nueva (target="_blank") -->
+        <a href="https://jaimesequer.github.io/konecta.yosu.9s7M4pWq2BvL5x8Zz1Tj6K3nF0yC9h8R4wP/Accidentes al Conductor y-u Ocupantes.pdf" 
+           target="_blank"
+           class="btn-descarga"
+           style="background-color: #2d6df6; color: white; padding: 14px 20px; text-decoration: none; border-radius: 6px; display: inline-block; font-weight: bold; font-size: 14px; box-shadow: 0 4px 6px rgba(0,0,0,0.15); width: 100%; max-width: 420px; text-align: left; box-sizing: border-box; font-family: sans-serif;">
+           📄 Formato Accidentes Conductor y/u Ocupantes
+        </a>
 
     </div>
-
-    <!-- Script inteligente para forzar la descarga en PC y Celular -->
-    <script>
-    function forzarDescarga(url, nombreArchivo) {
-        fetch(url)
-            .then(respuesta => respuesta.blob())
-            .then(blob => {
-                const link = document.createElement('a');
-                link.href = URL.createObjectURL(blob);
-                link.download = nombreArchivo;
-                document.body.appendChild(link);
-                link.click();
-                document.body.removeChild(link);
-                URL.revokeObjectURL(link.href);
-            })
-            .catch(error => {
-                const linkElement = document.createElement('a');
-                linkElement.href = url;
-                linkElement.download = nombreArchivo;
-                linkElement.target = '_self';
-                linkElement.click();
-            });
-    }
-    </script>
 
 </body>
 </html>
